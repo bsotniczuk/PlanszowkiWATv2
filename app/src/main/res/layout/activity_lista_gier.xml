@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1D1D1D"
-    tools:context=".MainActivity">
+    tools:context=".ListaGier">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -23,13 +23,9 @@
 
     <include layout="@layout/content_main" />
 
-<!--    <android.support.design.widget.FloatingActionButton-->
-<!--        android:id="@+id/fab"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom|end"-->
-<!--        android:layout_margin="@dimen/fab_margin"-->
-<!--        app:srcCompat="@android:drawable/ic_dialog_email" />-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -37,33 +33,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
-        tools:context=".MainActivity">
-
+        tools:context=".ListaGier">
 
         <ImageButton
-            android:id="@+id/listaGier"
+            android:id="@+id/a5sekund"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:src="@drawable/rect5746"
+            android:layout_height="140dp"
+            android:src="@drawable/a1_5_sekund"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
             android:background="@android:color/white"
-            android:onClick="listaGier"
-            android:text="Start Acc"
             android:layout_marginBottom="4dp"/>
 
         <ImageButton
-            android:id="@+id/wydarzenia"
+            android:id="@+id/b7cudow"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:layout_below="@id/listaGier"
-            android:src="@drawable/rect2"
+            android:layout_height="140dp"
+            android:layout_below="@id/a5sekund"
+            android:src="@drawable/b2_7_cudow"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:background="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/c3catan"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_below="@id/b7cudow"
+            android:src="@drawable/c3_catan"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:background="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/d4doble"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_below="@id/c3catan"
+            android:src="@drawable/a1_5_sekund"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:background="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/e5jungleSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_below="@id/d4doble"
+            android:src="@drawable/c3_catan"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
             android:background="@android:color/white"
-            android:onClick="wydarzenia"
-            android:text="Start Acc" />
+            android:layout_marginBottom="60dp"/>
 
     </RelativeLayout>
+
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
