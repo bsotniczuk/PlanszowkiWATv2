@@ -41,6 +41,7 @@
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
             android:background="@android:color/white"
+            android:onClick="showInfo"
             android:layout_marginBottom="4dp"/>
 
         <ImageButton
@@ -51,6 +52,7 @@
             android:src="@drawable/b2_7_cudow"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
+            android:onClick="showInfo"
             android:background="@android:color/white" />
 
         <ImageButton
@@ -61,6 +63,7 @@
             android:src="@drawable/c3_catan"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
+            android:onClick="showInfo"
             android:background="@android:color/white" />
 
         <ImageButton
@@ -71,6 +74,7 @@
             android:src="@drawable/d4_doble_d"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
+            android:onClick="showInfo"
             android:background="@android:color/white" />
 
         <ImageButton
@@ -81,6 +85,7 @@
             android:src="@drawable/e5_jungle_speed_e"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
+            android:onClick="showInfo"
             android:background="@android:color/white"
             android:layout_marginBottom="60dp"/>
 

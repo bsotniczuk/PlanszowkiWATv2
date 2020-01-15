@@ -28,7 +28,7 @@ public class Settings extends AppCompatActivity {
         if(switch1.isChecked()) MainActivity.notifications = true;
         else MainActivity.notifications = false;
 
-        Toast.makeText(getApplicationContext(), "Notifications set to: " + MainActivity.notifications, Toast.LENGTH_SHORT);
+        Toast.makeText(getApplicationContext(), "Notifications set to: " + MainActivity.notifications, Toast.LENGTH_SHORT).show();
     }
 
 }

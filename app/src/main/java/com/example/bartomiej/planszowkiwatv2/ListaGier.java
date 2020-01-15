@@ -1,6 +1,7 @@
 package com.example.bartomiej.planszowkiwatv2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,15 +11,32 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class ListaGier extends AppCompatActivity {
+
+    static int whichGame=1;
+
+    ImageButton a5sekund;
+    ImageButton b7cudow;
+    ImageButton c3catan;
+    ImageButton d4doble;
+    ImageButton e5jungleSpeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_gier);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+        a5sekund = findViewById(R.id.a5sekund);
+        b7cudow = findViewById(R.id.b7cudow);
+        c3catan = findViewById(R.id.c3catan);
+        d4doble = findViewById(R.id.d4doble);
+        e5jungleSpeed = findViewById(R.id.e5jungleSpeed);
+
         setSupportActionBar(toolbar);
     }
 
@@ -49,12 +67,57 @@ public class ListaGier extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void showInfo(View view){
+        //view.get
+        int viewId = view.getId();
+
+        if (viewId == a5sekund.getId())
+        {
+            ShowToast("a5sekundPressed");
+
+            whichGame = 1;
+            Intent intent = new Intent(getApplicationContext(), GameInfo.class);
+            startActivity(intent);
+        }
+        else if (viewId == b7cudow.getId())
+        {
+            ShowToast("b7cudowPressed");
+
+            whichGame = 2;
+            Intent intent = new Intent(getApplicationContext(), GameInfo.class);
+            startActivity(intent);
+        }
+        else if (viewId == c3catan.getId())
+        {
+            ShowToast("c3catanPressed");
+
+            whichGame = 3;
+            Intent intent = new Intent(getApplicationContext(), GameInfo.class);
+            startActivity(intent);
+        }
+        else if (viewId == d4doble.getId())
+        {
+            ShowToast("d4doblePressed");
+
+            whichGame = 4;
+            Intent intent = new Intent(getApplicationContext(), GameInfo.class);
+            startActivity(intent);
+        }
+        else if (viewId == e5jungleSpeed.getId())
+        {
+            ShowToast("e5jungleSpeedPressed");
+
+            whichGame = 5;
+            Intent intent = new Intent(getApplicationContext(), GameInfo.class);
+            startActivity(intent);
+        }
+    }
+
     public void ShowToast(CharSequence text) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
-        //CharSequence text = "Zapisano do pliku" ;//+ " index dla Fiat: " + carL.indexOf("Fiat");
         Toast toast = Toast.makeText(context, text, duration);
-        toast.setGravity(Gravity.CENTER, 0, 0);
+        //toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 

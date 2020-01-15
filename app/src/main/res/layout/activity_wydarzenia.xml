@@ -41,6 +41,7 @@
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
                 android:background="@android:color/white"
+                android:onClick="showEventInfo"
                 android:layout_marginBottom="4dp"/>
 
             <ImageButton
@@ -51,6 +52,7 @@
                 android:src="@drawable/b2wydarzenie"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
+                android:onClick="showEventInfo"
                 android:background="@android:color/white" />
 
             <ImageButton
@@ -61,6 +63,7 @@
                 android:src="@drawable/c3wydarzenie"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
+                android:onClick="showEventInfo"
                 android:background="@android:color/white" />
 
         </RelativeLayout>

@@ -79,9 +79,8 @@ public class MainActivity extends AppCompatActivity {
     public void ShowToast(CharSequence text) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
-        //CharSequence text = "Zapisano do pliku" ;//+ " index dla Fiat: " + carL.indexOf("Fiat");
         Toast toast = Toast.makeText(context, text, duration);
-        toast.setGravity(Gravity.CENTER, 0, 0);
+        //toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 }
