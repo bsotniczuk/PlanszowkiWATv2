@@ -7,16 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class GameInfo extends AppCompatActivity {
 
     ImageView a5;
-    ImageView b7;
-    ImageView c3;
-    ImageView d4;
-    ImageView e5;
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,5 +41,9 @@ public class GameInfo extends AppCompatActivity {
             //e5.setVisibility(View.VISIBLE);
             a5.setImageResource(R.drawable.e5jpg);
         }
+    }
+
+    public void rezerwuj(View view){
+        Toast.makeText(getApplicationContext(), "Rezerwuj pressed", Toast.LENGTH_SHORT).show();
     }
 }
