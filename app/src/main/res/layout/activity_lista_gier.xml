@@ -21,8 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -70,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_below="@id/c3catan"
-            android:src="@drawable/a1_5_sekund"
+            android:src="@drawable/d4_doble_d"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
             android:background="@android:color/white" />
@@ -80,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_below="@id/d4doble"
-            android:src="@drawable/c3_catan"
+            android:src="@drawable/e5_jungle_speed_e"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
             android:background="@android:color/white"

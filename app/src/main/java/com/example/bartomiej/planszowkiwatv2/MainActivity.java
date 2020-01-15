@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    static boolean notifications;
+    static int loggedInState=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             ShowToast("Settings pressed");
+            Intent intent = new Intent(getApplicationContext(), Settings.class);
+            startActivity(intent);
             return true;
         }
 
@@ -66,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void wydarzenia(View view){
         ShowToast("Wydarzenia Opened");
+
+        Intent intent = new Intent(getApplicationContext(), Wydarzenia.class);
+        startActivity(intent);
     }
 
     public void ShowToast(CharSequence text) {

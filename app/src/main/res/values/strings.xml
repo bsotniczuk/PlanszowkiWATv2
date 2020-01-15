@@ -2,4 +2,6 @@
     <string name="app_name">PlanszówkiWAT</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_lista_gier">Gra</string>
+    <string name="title_activity_wydarzenia">Wydarzenia</string>
+    <string name="title_activity_settings">Ustawienia</string>
 </resources>
