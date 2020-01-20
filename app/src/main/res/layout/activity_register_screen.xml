@@ -21,71 +21,157 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_marginTop="65dp"
+        tools:context=".ListaGier">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <TextView
+            android:id="@+id/loginTextRegister"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
-            tools:context=".ListaGier">
+            android:layout_height="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="5dp"
+            android:text="Login"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-            <ImageButton
-                android:id="@+id/a5sekund"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:src="@drawable/a1_5_sekund"
-                android:layout_gravity="center_horizontal"
-                android:scaleType="fitXY"
-                android:background="@android:color/white"
-                android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/loginEditTextRegister"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/loginTextRegister"
+            android:paddingLeft="10dp"
+            android:background="@drawable/roundedtextview"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"/>
 
-            <ImageButton
-                android:id="@+id/b7cudow"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_below="@id/a5sekund"
-                android:src="@drawable/b2_7_cudow"
-                android:layout_gravity="center_horizontal"
-                android:scaleType="fitXY"
-                android:background="@android:color/white" />
+        <TextView
+            android:id="@+id/passwordTextRegister"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/loginEditTextRegister"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="5dp"
+            android:text="Hasło"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-            <ImageButton
-                android:id="@+id/c3catan"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_below="@id/b7cudow"
-                android:src="@drawable/c3_catan"
-                android:layout_gravity="center_horizontal"
-                android:scaleType="fitXY"
-                android:background="@android:color/white" />
+        <EditText
+            android:id="@+id/passwordEditTextRegister"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/passwordTextRegister"
+            android:paddingLeft="10dp"
+            android:background="@drawable/roundedtextview"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"/>
 
-            <ImageButton
-                android:id="@+id/d4doble"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_below="@id/c3catan"
-                android:src="@drawable/d4_doble_d"
-                android:layout_gravity="center_horizontal"
-                android:scaleType="fitXY"
-                android:background="@android:color/white" />
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/passwordEditTextRegister"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="5dp"
+            android:text="e-mail"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-            <ImageButton
-                android:id="@+id/e5jungleSpeed"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_below="@id/d4doble"
-                android:src="@drawable/e5_jungle_speed_e"
-                android:layout_gravity="center_horizontal"
-                android:scaleType="fitXY"
-                android:background="@android:color/white"
-                android:layout_marginBottom="60dp"/>
+        <EditText
+            android:id="@+id/emailEditTextRegister"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/emailText"
+            android:paddingLeft="10dp"
+            android:background="@drawable/roundedtextview"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"/>
 
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/emailEditTextRegister"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="5dp"
+            android:text="Imię"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-    </ScrollView>
+        <EditText
+            android:id="@+id/nameEditTextRegister"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/nameText"
+            android:paddingLeft="10dp"
+            android:background="@drawable/roundedtextview"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/surnameText"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/nameEditTextRegister"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="5dp"
+            android:text="Nazwisko"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/surnameEditTextRegister"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/surnameText"
+            android:paddingLeft="10dp"
+            android:background="@drawable/roundedtextview"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/notificationsText"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/surnameEditTextRegister"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="5dp"
+            android:text="Włączone powiadomienia"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/switchRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notificationsText"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="24dp"
+            android:switchMinWidth="60dp"
+            android:text="Włączone"
+            android:enabled="true"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -27,7 +27,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="30dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/roundedbutton"
         android:text="Rezerwuj"
         android:onClick="rezerwuj"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
