@@ -1,5 +1,6 @@
 package com.example.bartomiej.planszowkiwatv2;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 public class GameInfo extends AppCompatActivity {
 
     ImageView a5;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,13 @@ public class GameInfo extends AppCompatActivity {
             //e5.setVisibility(View.VISIBLE);
             a5.setImageResource(R.drawable.e5jpg);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), ListaGier.class);
+        startActivity(intent);
+        finish();
     }
 
     public void rezerwuj(View view){

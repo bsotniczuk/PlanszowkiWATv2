@@ -16,7 +16,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     static boolean notifications;
-    static int loggedInState=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //getSupportActionBar().se
+        //jeżeli użytkownik jest niezalogowany to odpal ekran logowania
+        /*if (loggedInState == 0)
+        {
+            Intent intent = new Intent(getApplicationContext(), EkranLogowania.class);
+            startActivity(intent);
+        }*/
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+    }
+
+    @Override
+    public void onBackPressed() {
+        //do nothing because I don't want to allow user to get into a login screen
+        // Do Here what ever you want do on back press;
     }
 
     @Override
@@ -56,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             ShowToast("Settings pressed");
             Intent intent = new Intent(getApplicationContext(), Settings.class);
             startActivity(intent);
+            finish();
             return true;
         }
 
@@ -67,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), ListaGier.class);
         startActivity(intent);
+        finish();
     }
 
     public void wydarzenia(View view){
@@ -74,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), Wydarzenia.class);
         startActivity(intent);
+        finish();
     }
 
     public void ShowToast(CharSequence text) {

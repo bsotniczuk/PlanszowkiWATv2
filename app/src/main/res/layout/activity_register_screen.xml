@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1D1D1D"
+    tools:context=".RegisterScreen">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            tools:context=".ListaGier">
+
+            <ImageButton
+                android:id="@+id/a5sekund"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:src="@drawable/a1_5_sekund"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:background="@android:color/white"
+                android:layout_marginBottom="4dp"/>
+
+            <ImageButton
+                android:id="@+id/b7cudow"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_below="@id/a5sekund"
+                android:src="@drawable/b2_7_cudow"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:background="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/c3catan"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_below="@id/b7cudow"
+                android:src="@drawable/c3_catan"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:background="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/d4doble"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_below="@id/c3catan"
+                android:src="@drawable/d4_doble_d"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:background="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/e5jungleSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_below="@id/d4doble"
+                android:src="@drawable/e5_jungle_speed_e"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:background="@android:color/white"
+                android:layout_marginBottom="60dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

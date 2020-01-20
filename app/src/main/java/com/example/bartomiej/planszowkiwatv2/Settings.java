@@ -1,5 +1,6 @@
 package com.example.bartomiej.planszowkiwatv2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,11 +25,24 @@ public class Settings extends AppCompatActivity {
         switch1 = findViewById(R.id.switch1);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void notifications(View view){
         if(switch1.isChecked()) MainActivity.notifications = true;
         else MainActivity.notifications = false;
 
         Toast.makeText(getApplicationContext(), "Notifications set to: " + MainActivity.notifications, Toast.LENGTH_SHORT).show();
+    }
+
+    public void logOut(View view){
+        Intent intent = new Intent(getApplicationContext(), EkranLogowania.class);
+        startActivity(intent);
+        finish();
     }
 
 }

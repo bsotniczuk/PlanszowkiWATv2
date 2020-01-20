@@ -1,5 +1,6 @@
 package com.example.bartomiej.planszowkiwatv2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -27,5 +28,12 @@ public class EventInfo extends AppCompatActivity {
         {
             eventInfo.setImageResource(R.drawable.c3eventjpg);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Wydarzenia.class);
+        startActivity(intent);
+        finish();
     }
 }

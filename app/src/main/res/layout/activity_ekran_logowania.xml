@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".EkranLogowania">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            tools:context=".ListaGier">
+
+            <ImageView
+                android:id="@+id/planszowkiLogo"
+                android:layout_width="290dp"
+                android:layout_height="180dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:background="@android:color/white"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"/>
+
+            <EditText
+                android:id="@+id/loginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/planszowkiLogo"
+                android:textAlignment="center"
+                android:hint="Login"
+                android:textColorHint="@color/colorText"
+                android:background="@android:color/black"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/loginEditText"
+                android:textAlignment="center"
+                android:hint="Hasło"
+                android:textColorHint="@color/colorText"
+                android:background="@android:color/black"
+                android:textColor="@color/colorText"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginBottom="25dp"/>
+
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/passwordEditText"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="login"
+                android:background="@color/colorPrimary"
+                android:text="Zaloguj się"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/orText"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/loginButton"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:text="Lub"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/orText"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginBottom="25dp"
+                android:onClick="register"
+                android:background="@color/colorPrimary"
+                android:text="Zarejestruj się"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <Button
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="130dp"
+                android:layout_marginRight="130dp"
+                android:layout_marginBottom="25dp"
+                android:onClick="skip"
+                android:background="@color/colorPrimary"
+                android:text="Pomiń"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

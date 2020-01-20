@@ -32,6 +32,13 @@ public class Wydarzenia extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void showEventInfo(View view){
         //view.get
         int viewId = view.getId();
