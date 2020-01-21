@@ -10,7 +10,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG="DatabaseHelper";
-    private static final String TABLE_NAME="people_table";
+    private static final String TABLE_NAME="people_table1";
     private static final String COL1="ID";
     private static final String COL2="login";
     private static final String COL3="password";
@@ -24,19 +24,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COL2 + " TEXT, " + COL3 + " TEXT)";
         db.execSQL(createTable);
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
 
-    public boolean addData(String item){
+    public boolean addData(String item1, String item2){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, item);
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_NAME);
+        contentValues.put(COL2, item1);
+        contentValues.put(COL3, item2);
+        Log.d(TAG, "addData: Adding " + item1 + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -65,11 +65,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;}
     }
 
+    public void deleteAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+    }
+
     public Cursor getData()
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return data;
+    }
+
+    public Cursor getIfExists(String item)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor data = db.rawQuery("SELECT " + COL1 + ", " + COL2 + ", " + COL3 +
+                " FROM " + TABLE_NAME +
+                " WHERE " + COL2 + " = '" + item + "'", null);
         return data;
     }
 }

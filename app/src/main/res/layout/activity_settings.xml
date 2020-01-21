@@ -35,12 +35,14 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="24dp"
                 android:switchMinWidth="80dp"
+                android:theme="@style/SwitchTheme"
                 android:onClick="notifications"
                 android:text="Powiadomienia"
                 android:textColor="@android:color/white"
                 android:textSize="26sp" />
 
             <Button
+                android:id="@+id/logOutButton"
                 android:layout_width="400dp"
                 android:layout_height="60dp"
                 android:layout_alignParentBottom="true"

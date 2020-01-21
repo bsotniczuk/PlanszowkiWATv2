@@ -41,6 +41,18 @@ public class ListaGier extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //clear the image resource, to improve memory efficiency
+        a5sekund.setImageResource(android.R.color.transparent);
+        b7cudow.setImageResource(android.R.color.transparent);
+        c3catan.setImageResource(android.R.color.transparent);
+        d4doble.setImageResource(android.R.color.transparent);
+        e5jungleSpeed.setImageResource(android.R.color.transparent);
+    }
+
+    @Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

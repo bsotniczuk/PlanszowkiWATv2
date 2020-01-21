@@ -33,6 +33,16 @@ public class Wydarzenia extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //clear the image resource, to improve memory efficiency
+        a1wydarzenie.setImageResource(android.R.color.transparent);
+        b2wydarzenie.setImageResource(android.R.color.transparent);
+        c3wydarzenie.setImageResource(android.R.color.transparent);
+    }
+
+    @Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

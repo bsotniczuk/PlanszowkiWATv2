@@ -7,10 +7,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
 public class Settings extends AppCompatActivity {
+
+    Button logOutButton;
 
     Switch switch1;
 
@@ -23,6 +26,13 @@ public class Settings extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         switch1 = findViewById(R.id.switch1);
+
+        logOutButton = findViewById(R.id.logOutButton);
+
+        //if user skipped, display different String
+        if (EkranLogowania.idOfUser.compareTo(EkranLogowania.userSkipped) == 0)
+            logOutButton.setText("Wróć do ekranu logowania");
+        else logOutButton.setText("Wyloguj się");
     }
 
     @Override

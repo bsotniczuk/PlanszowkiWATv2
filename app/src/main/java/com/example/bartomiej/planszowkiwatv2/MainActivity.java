@@ -11,11 +11,14 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     static boolean notifications;
+    ImageButton listaGier;
+    ImageButton listaWydarzen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        listaGier = findViewById(R.id.listaGier);
+        listaWydarzen = findViewById(R.id.wydarzenia);
 
         //jeżeli użytkownik jest niezalogowany to odpal ekran logowania
         /*if (loggedInState == 0)
@@ -39,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //clear the image resource, to improve memory efficiency
+        listaGier.setImageResource(android.R.color.transparent);
+        listaWydarzen.setImageResource(android.R.color.transparent);
     }
 
     @Override

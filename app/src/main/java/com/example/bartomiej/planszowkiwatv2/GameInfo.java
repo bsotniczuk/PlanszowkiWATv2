@@ -45,6 +45,14 @@ public class GameInfo extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //clear the image resource, to improve memory efficiency
+        a5.setImageResource(android.R.color.transparent);
+    }
+
+    @Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), ListaGier.class);
         startActivity(intent);

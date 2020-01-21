@@ -103,9 +103,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_below="@+id/emailEditTextRegister"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="5dp"
-            android:text="Imię"
+            android:text="*  Imię"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
@@ -127,9 +127,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_below="@+id/nameEditTextRegister"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="5dp"
-            android:text="Nazwisko"
+            android:text="*  Nazwisko"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
@@ -159,7 +159,7 @@
             android:textSize="18sp" />
 
         <Switch
-            android:id="@+id/switchRegister"
+            android:id="@+id/notificationsSwitchRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/notificationsText"
@@ -168,6 +168,7 @@
             android:layout_marginRight="24dp"
             android:switchMinWidth="60dp"
             android:text="Włączone"
+            android:theme="@style/SwitchTheme"
             android:enabled="true"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
