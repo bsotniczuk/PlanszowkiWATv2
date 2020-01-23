@@ -12,10 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RegisterScreen"
+            android:name=".GameInfo"
+            android:label="@string/title_activity_game_info"
             android:launchMode="singleInstance"
-            android:label="@string/title_activity_register_screen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".RegisterScreen"
+            android:label="@string/title_activity_register_screen"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EkranLogowania"
             android:label="@string/title_activity_ekran_logowania"
@@ -29,10 +34,9 @@
         </activity>
         <activity
             android:name=".EventInfo"
-            android:launchMode="singleInstance" />
-        <activity
-            android:name=".GameInfo"
-            android:launchMode="singleInstance" />
+            android:label="@string/title_activity_event_info"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"

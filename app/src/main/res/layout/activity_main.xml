@@ -31,9 +31,7 @@
 <!--        android:layout_margin="@dimen/fab_margin"-->
 <!--        app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
@@ -43,19 +41,19 @@
         <ImageButton
             android:id="@+id/listaGier"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:src="@drawable/rect5746jpg"
+            android:layout_height="205dp"
             android:layout_gravity="center_horizontal"
-            android:scaleType="fitXY"
+            android:layout_marginBottom="4dp"
             android:background="@android:color/white"
             android:onClick="listaGier"
-            android:text="Start Acc"
-            android:layout_marginBottom="4dp"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/rect5746jpg"
+            android:text="Start Acc" />
 
         <ImageButton
             android:id="@+id/wydarzenia"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
+            android:layout_height="205dp"
             android:layout_below="@id/listaGier"
             android:src="@drawable/rect2jpg"
             android:layout_gravity="center_horizontal"

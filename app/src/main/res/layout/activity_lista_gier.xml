@@ -33,12 +33,18 @@
         android:layout_marginTop="60dp"
         tools:context=".ListaGier">
 
+        <TextView
+            android:id="@+id/dummy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
         <ImageButton
             android:id="@+id/a5sekund"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="135dp"
             android:src="@drawable/a1_5_sekundjpg"
             android:layout_gravity="center_horizontal"
+            android:layout_below="@id/dummy"
             android:scaleType="fitXY"
             android:background="@android:color/white"
             android:onClick="showInfo"
@@ -47,7 +53,7 @@
         <ImageButton
             android:id="@+id/b7cudow"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="135dp"
             android:layout_below="@id/a5sekund"
             android:src="@drawable/b2_7_cudowjpg"
             android:layout_gravity="center_horizontal"
@@ -58,7 +64,7 @@
         <ImageButton
             android:id="@+id/c3catan"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="135dp"
             android:layout_below="@id/b7cudow"
             android:src="@drawable/c3_catanjpg"
             android:layout_gravity="center_horizontal"
@@ -69,7 +75,7 @@
         <ImageButton
             android:id="@+id/d4doble"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="135dp"
             android:layout_below="@id/c3catan"
             android:src="@drawable/d4_doble_djpg"
             android:layout_gravity="center_horizontal"
@@ -80,7 +86,7 @@
         <ImageButton
             android:id="@+id/e5jungleSpeed"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="135dp"
             android:layout_below="@id/d4doble"
             android:src="@drawable/e5_jungle_speed_ejpg"
             android:layout_gravity="center_horizontal"

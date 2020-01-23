@@ -7,4 +7,6 @@
     <string name="title_activity_settings">Ustawienia</string>
     <string name="title_activity_ekran_logowania">PlanszówkiWAT</string>
     <string name="title_activity_register_screen">Rejestracja</string>
+    <string name="title_activity_game_info">Opis Gry</string>
+    <string name="title_activity_event_info">Opis wydarzenia</string>
 </resources>

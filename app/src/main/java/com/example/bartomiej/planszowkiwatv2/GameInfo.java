@@ -1,11 +1,9 @@
 package com.example.bartomiej.planszowkiwatv2;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,6 +16,8 @@ public class GameInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_info);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         a5 = findViewById(R.id.a5);
 
@@ -57,6 +57,8 @@ public class GameInfo extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), ListaGier.class);
         startActivity(intent);
         finish();
+
+        return;
     }
 
     public void rezerwuj(View view){

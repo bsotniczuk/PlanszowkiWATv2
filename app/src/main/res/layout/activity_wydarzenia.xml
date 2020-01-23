@@ -36,7 +36,7 @@
             <ImageButton
                 android:id="@+id/a1wydarzenie"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="130dp"
                 android:src="@drawable/a1wydarzenie"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
@@ -47,7 +47,7 @@
             <ImageButton
                 android:id="@+id/b2wydarzenie"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="130dp"
                 android:layout_below="@id/a1wydarzenie"
                 android:src="@drawable/b2wydarzenie"
                 android:layout_gravity="center_horizontal"
@@ -58,7 +58,7 @@
             <ImageButton
                 android:id="@+id/c3wydarzenie"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="130dp"
                 android:layout_below="@id/b2wydarzenie"
                 android:src="@drawable/c3wydarzenie"
                 android:layout_gravity="center_horizontal"

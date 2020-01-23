@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,38 +24,27 @@ public class EkranLogowania extends AppCompatActivity {
 
     static String idOfUser = "-1"; //-1 to uzytkownik nie zalogowany
     static String userSkipped = "-1";
-    static String admin = "1";
+    static String admin = "2";
+    static String isLoggedInfo = "1";
+
+    static String currentUserLogin="Uzytkownik nie zalogowany";
+
+    static String currentUserID = "-1";
+
+    String isLogged = "false";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ekran_logowania);
 
-        mDatabaseHelper = new DatabaseHelper(this);
+        init();
 
-//        mDatabaseHelper.addData("admin", "admin");
-//        mDatabaseHelper.addData("Bartlomiej", "abc");
-//        mDatabaseHelper.addData("Stasiak", "Stasiak");
-
-        Cursor data = mDatabaseHelper.getData();
-
-        if (data.moveToFirst()) {
-            //Toast.makeText(getApplicationContext(), "Baza Danych zawiera elementy", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "Baza Danych jest pusta", Toast.LENGTH_SHORT).show();
-        }
-
-        //mDatabaseHelper.deleteAllData();
-
-        String checkString = "admin";
-        Cursor abc = mDatabaseHelper.getIfExists(checkString);
-        if (abc.moveToFirst()) {
-            String a = abc.getString(0);
-            String b = abc.getString(1);
-            String c = abc.getString(2);
-
-            Toast.makeText(getApplicationContext(), "BD zawiera uzytkownika " + checkString + " o id: "
-                    + a + " | loginie: " + b + " | haśle: " + c, Toast.LENGTH_LONG).show();
+        //if user is logged in continue to MainActivity
+        if (isLogged.compareTo("true") == 0) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         loginEditText = findViewById(R.id.loginEditText);
@@ -69,28 +59,32 @@ public class EkranLogowania extends AppCompatActivity {
 
         Cursor abc = mDatabaseHelper.getIfExists(login);
 
+        if (login.compareTo("false") == 0 || login.compareTo("true") == 0) {
+            Toast.makeText(getApplicationContext(), "Cannot login as true or false", Toast.LENGTH_SHORT).show();
+        }
         //uzytkownik istnieje w bazie danych
-        if (abc.moveToFirst()) {
+        else if (abc.moveToFirst()) {
             String c = abc.getString(2);
 
-            int check = haslo.compareTo(c);
+            int check = haslo.compareTo(c); //informacyjna dana
 
             //check password
-            if (haslo.compareTo(c) == 0)
-            {
+            if (haslo.compareTo(c) == 0) {
                 idOfUser = abc.getString(0);
-                Toast.makeText(getApplicationContext(), "Uzytkownik moze poprawnie sie zalogowac | " + check + " | id: " + idOfUser, Toast.LENGTH_SHORT).show();
+                currentUserLogin = abc.getString(1);
+//                isLogged = "true";
+
+                int temp = mDatabaseHelper.updateUserInfo("1", "true", abc.getString(0));
+
+                Toast.makeText(getApplicationContext(), "Uzytkownik moze poprawnie sie zalogowac | " + check + " | id: " + abc.getString(0) + " | UPDATE: " + temp, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
-            }
-            else
-            {
+            } else {
                 Toast.makeText(getApplicationContext(), "Podano błędne hasło", Toast.LENGTH_SHORT).show();
             }
-        }
-        else {
+        } else {
             Toast.makeText(getApplicationContext(), "Podany uzytkownik nie istnieje", Toast.LENGTH_SHORT).show();
         }
     }
@@ -109,6 +103,77 @@ public class EkranLogowania extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void init() {
+        try {
+            mDatabaseHelper = new DatabaseHelper(this);
+
+            String userInfoLogin = "false"; //czy zalogowany | login
+            String userInfoPassword = userSkipped; //id uzytkownika zalogowanego | password
+
+            String userAdminLogin = "admin";
+            String userAdminPassword = "admin";
+
+            String user1Login = "Bartlomiej";
+            String user1Password = "abc";
+
+            String user2Login = "Stasiak";
+            String user2Password = "Stasiak";
+
+            //populate Database
+            if (!mDatabaseHelper.checkIfExists(userInfoLogin))
+                mDatabaseHelper.addData(1, userInfoLogin, userInfoPassword);
+            if (!mDatabaseHelper.checkIfExists(userAdminLogin))
+                mDatabaseHelper.addData(2, userAdminLogin, userAdminPassword);
+            if (!mDatabaseHelper.checkIfExists(user1Login))
+                mDatabaseHelper.addData(3, user1Login, user1Password);
+            if (!mDatabaseHelper.checkIfExists(user2Login))
+                mDatabaseHelper.addData(4, user2Login, user2Password);
+
+            Cursor data = mDatabaseHelper.getData();
+
+            if (data.moveToFirst()) {
+                //Toast.makeText(getApplicationContext(), "Baza Danych zawiera elementy", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Baza Danych jest pusta", Toast.LENGTH_SHORT).show();
+            }
+
+            //sprawdz informacje o użytkowniku zalogowanym
+            String checkString = userInfoLogin;
+            Cursor abc = mDatabaseHelper.getIfExists(1);
+            if (abc.moveToFirst()) {
+                String a = abc.getString(0);
+                String b = abc.getString(1);
+                String c = abc.getString(2);
+
+                currentUserID = a;
+                isLogged = b;
+                idOfUser = c;
+
+                //oznajmianie całej aplikacji o loginie zalogowanej osoby
+                //dodaj opcje sprawdzania czy hasła się zgadzają, żeby zapobiec włamania na czyjeś konto
+                //edytując pamięć urządzenia i zmieniając niskopoziomowo ID
+                //dodaj opcję dwóch baz danych w których będziesz trzymał informację lokalnie i serwerowo
+                //lokalna baza danych będzie trzymać tylko informację o aktualnie zalogowanym użytkowniku
+                int currentUserIDint = Integer.parseInt(c.trim());
+
+                Cursor currentUserInfo = mDatabaseHelper.getIfExists(currentUserIDint);
+                if (currentUserInfo.moveToFirst())
+                {
+                    currentUserLogin = currentUserInfo.getString(1);
+                }
+
+                String log = "BD zawiera uzytkownika (" + checkString + ") o id: "
+                        + a + " | loginie: " + b + " | haśle: " + c;
+
+                Log.i("WATlog", log);
+                //Toast.makeText(getApplicationContext(), log, Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            //Toast.makeText(getApplicationContext(), "Exception: " + e, Toast.LENGTH_LONG).show();
+            Log.i("WATlog", "Exception: " + e);
+        }
     }
 
 }

@@ -29,22 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         listaGier = findViewById(R.id.listaGier);
         listaWydarzen = findViewById(R.id.wydarzenia);
-
-        //jeżeli użytkownik jest niezalogowany to odpal ekran logowania
-        /*if (loggedInState == 0)
-        {
-            Intent intent = new Intent(getApplicationContext(), EkranLogowania.class);
-            startActivity(intent);
-        }*/
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
     @Override
@@ -78,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            ShowToast("Settings pressed");
+            //ShowToast("Settings pressed");
             Intent intent = new Intent(getApplicationContext(), Settings.class);
             startActivity(intent);
             finish();
@@ -89,16 +73,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void listaGier(View view){
-        ShowToast("Lista Gier Opened");
-
+        //ShowToast("Lista Gier Opened");
         Intent intent = new Intent(getApplicationContext(), ListaGier.class);
         startActivity(intent);
         finish();
     }
 
     public void wydarzenia(View view){
-        ShowToast("Wydarzenia Opened");
-
+        //ShowToast("Wydarzenia Opened");
         Intent intent = new Intent(getApplicationContext(), Wydarzenia.class);
         startActivity(intent);
         finish();

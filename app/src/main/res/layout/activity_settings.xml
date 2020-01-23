@@ -34,6 +34,7 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="24dp"
+                android:layout_marginBottom="20dp"
                 android:switchMinWidth="80dp"
                 android:theme="@style/SwitchTheme"
                 android:onClick="notifications"
@@ -41,9 +42,49 @@
                 android:textColor="@android:color/white"
                 android:textSize="26sp" />
 
+            <TextView
+                android:id="@+id/currentUserText"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/switch1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Zalogowano jako:"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/currentUserLogin"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/currentUserText"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                android:text="Uzytkownik nie zalogowany"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/myReservationButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_below="@id/currentUserLogin"
+                android:onClick="checkReservation"
+                android:background="@drawable/roundedbutton"
+                android:text="Moje rezerwacje"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <Button
                 android:id="@+id/logOutButton"
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="100dp"

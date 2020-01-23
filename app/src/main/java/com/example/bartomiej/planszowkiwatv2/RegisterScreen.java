@@ -27,6 +27,7 @@ public class RegisterScreen extends AppCompatActivity {
     EditText surname;
 
     Switch notifications;
+    static boolean isNotifications = false;
 
     TextView loginText;
     TextView passwordText;
@@ -51,12 +52,26 @@ public class RegisterScreen extends AppCompatActivity {
         surname = findViewById(R.id.surnameEditTextRegister);
 
         notifications = findViewById(R.id.notificationsSwitchRegister);
+        isNotifications = false;
 
         loginText = findViewById(R.id.loginTextRegister);
         passwordText = findViewById(R.id.passwordTextRegister);
 //        emailText = findViewById(R.id.emailText);
         nameText = findViewById(R.id.nameText);
         surnameText = findViewById(R.id.surnameText);
+    }
+
+    public void notificationsClick(View view){
+        if (notifications.isChecked())
+        {
+            notifications.setText("Włączone");
+            isNotifications = true;
+        }
+        else
+        {
+            notifications.setText("Wyłączone");
+            isNotifications = false;
+        }
     }
 
     @Override
@@ -91,9 +106,6 @@ public class RegisterScreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-            else{
-
-            }
 
             return true;
         }
@@ -114,6 +126,12 @@ public class RegisterScreen extends AppCompatActivity {
         if (log.compareTo("") == 0){
             //Toast.makeText(getApplicationContext(), "name is null", Toast.LENGTH_SHORT).show();
             loginText.setText("Login (Pole jest wymagane)");
+            loginText.setTextColor(Color.RED);
+
+            errors = true;
+        }
+        if (log.compareTo("true") == 0 || log.compareTo("false") == 0){
+            loginText.setText("Login (true/false są niedozwolone)");
             loginText.setTextColor(Color.RED);
 
             errors = true;
@@ -146,21 +164,32 @@ public class RegisterScreen extends AppCompatActivity {
             Cursor data = mDatabaseHelper.getIfExists(log);
 
             //if user with the same exact login doesnt exist in database, then allow to signup
-            if(data.moveToFirst()== false) {
+            if(data.moveToFirst() == false) {
 
-                mDatabaseHelper.addData(log, pass);
+                Cursor last = mDatabaseHelper.getLastFromDB();
 
-                data = mDatabaseHelper.getIfExists(log);
+                //if last record exists then
+                if (last.moveToFirst()) {
 
-                if (data.moveToFirst()) {
-                    EkranLogowania.idOfUser = data.getString(0);
+                    int ID = last.getInt(0) + 1; //get last id
 
-                    Toast.makeText(getApplicationContext(), "User: " + data.getString(1) + " | with id: " + data.getString(0) + " added", Toast.LENGTH_SHORT).show();
+                    //add a user to database
+                    mDatabaseHelper.addData(ID, log, pass);
+
+                    data = mDatabaseHelper.getIfExists(log);
+
+                    if (data.moveToFirst()) {
+                        EkranLogowania.idOfUser = data.getString(0);
+                        EkranLogowania.currentUserLogin = data.getString(1);
+
+                        Toast.makeText(getApplicationContext(), "User: " + EkranLogowania.currentUserLogin + " | with id: " + data.getString(0) + " added", Toast.LENGTH_SHORT).show();
+                    }
+
+                    resetAllErrors();
+
+                    return true;
                 }
-
-                resetAllErrors();
-
-                return true;
+                return false;
             }
             else{
                 loginText.setText("Login (Użytkownik już istnieje)");
