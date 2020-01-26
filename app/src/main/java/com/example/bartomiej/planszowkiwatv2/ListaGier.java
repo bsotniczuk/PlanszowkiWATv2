@@ -150,31 +150,31 @@ public class ListaGier extends AppCompatActivity {
         int viewId = view.getId();
 
         if (viewId == a5sekund.getId()) {
-            ShowToast("a5sekundPressed");
+            if (!MainActivity.HideToast) ShowToast("a5sekundPressed");
 
             whichGame = 1;
             Intent intent = new Intent(getApplicationContext(), GameInfo.class);
             startActivity(intent);
         } else if (viewId == b7cudow.getId()) {
-            ShowToast("b7cudowPressed");
+            if (!MainActivity.HideToast) ShowToast("b7cudowPressed");
 
             whichGame = 2;
             Intent intent = new Intent(getApplicationContext(), GameInfo.class);
             startActivity(intent);
         } else if (viewId == c3catan.getId()) {
-            ShowToast("c3catanPressed");
+            if (!MainActivity.HideToast) ShowToast("c3catanPressed");
 
             whichGame = 3;
             Intent intent = new Intent(getApplicationContext(), GameInfo.class);
             startActivity(intent);
         } else if (viewId == d4doble.getId()) {
-            ShowToast("d4doblePressed");
+            if (!MainActivity.HideToast) ShowToast("d4doblePressed");
 
             whichGame = 4;
             Intent intent = new Intent(getApplicationContext(), GameInfo.class);
             startActivity(intent);
         } else if (viewId == e5jungleSpeed.getId()) {
-            ShowToast("e5jungleSpeedPressed");
+            if (!MainActivity.HideToast) ShowToast("e5jungleSpeedPressed");
 
             whichGame = 5;
             Intent intent = new Intent(getApplicationContext(), GameInfo.class);

@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -45,8 +46,7 @@ public class Settings extends AppCompatActivity {
         if (EkranLogowania.idOfUser.compareTo(EkranLogowania.userSkipped) == 0) {
             logOutButton.setText("Wróć do ekranu logowania");
             myReservationButton.setVisibility(View.INVISIBLE);
-        }
-        else {
+        } else {
             logOutButton.setText("Wyloguj się");
             myReservationButton.setVisibility(View.VISIBLE);
         }
@@ -59,29 +59,33 @@ public class Settings extends AppCompatActivity {
         finish();
     }
 
-    public void notifications(View view){
-        if(switch1.isChecked()) RegisterScreen.isNotifications = true;
+    public void notifications(View view) {
+        if (switch1.isChecked()) RegisterScreen.isNotifications = true;
         else RegisterScreen.isNotifications = false;
 
-        Toast.makeText(getApplicationContext(), "Notifications set to: " + switch1.isChecked(), Toast.LENGTH_SHORT).show();
+        if (!MainActivity.HideToast) Toast.makeText(getApplicationContext(), "Notifications set to: " + switch1.isChecked(), Toast.LENGTH_SHORT).show();
     }
 
-    public void logOut(View view){
+    public void logOut(View view) {
 
         DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
         //save in DB that user logged out
         int temp = mDatabaseHelper.updateUserInfo("1", "false", EkranLogowania.userSkipped);
         EkranLogowania.currentUserLogin = "Uzytkownik nie zalogowany";
         currentUser.setText(EkranLogowania.currentUserLogin);
-        Toast.makeText(getApplicationContext(), "Uzytkownik poprawnie wylogowany | UPDATE: " + temp, Toast.LENGTH_SHORT).show();
+
+        if (!MainActivity.HideToast) Toast.makeText(getApplicationContext(), "Uzytkownik poprawnie wylogowany | UPDATE: " + temp, Toast.LENGTH_SHORT).show();
+        if (MainActivity.HideToast) Toast.makeText(getApplicationContext(), "Uzytkownik poprawnie wylogowany", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), EkranLogowania.class);
         startActivity(intent);
         finish();
     }
 
-    public void checkReservation(View view){
-        Toast.makeText(getApplicationContext(), "Moje rezerwacje", Toast.LENGTH_SHORT).show();
+    public void checkReservation(View view) {
+        Toast toast = Toast.makeText(getApplicationContext(), "Ta funkcja będzie wkrótce dostępna", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
 }

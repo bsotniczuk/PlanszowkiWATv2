@@ -8,15 +8,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelperGames extends SQLiteOpenHelper {
 
-    private static final String TAG="DatabaseHelper";
-    private static final String TABLE_NAME="people_table";
+    private static final String TAG="DatabaseHelperGames";
+
+    private static final String TABLE_NAME="games_table";
     private static final String COL1="ID";
-    private static final String COL2="login";
-    private static final String COL3="password";
+    private static final String COL2="game_name";
+    private static final String COL3="borrow_user_id";
 
-    public DatabaseHelper(Context context)//, String name, SQLiteDatabase.CursorFactory factory, int version)
+    public DatabaseHelperGames(Context context)//, String name, SQLiteDatabase.CursorFactory factory, int version)
     {
         super(context, TABLE_NAME, null, 1);
     }
@@ -106,6 +107,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public Cursor getAllBorrowed()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor data = db.rawQuery("SELECT " + COL1 + ", " + COL2 + ", " + COL3 +
+                " FROM " + TABLE_NAME +
+                " WHERE " + COL2 + " <> '" + EkranLogowania.gameNotBorrowedID + "'", null);
+        return data;
+    }
+
     public boolean checkIfExists(String item)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -118,29 +129,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return false;
     }
 
-    public int updateUserInfo(String id, String login, String password)
+    public int updateGameInfo(String id, String name, String borrow_user_id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, login);
-        contentValues.put(COL3, password);
+        contentValues.put(COL2, name);
+        contentValues.put(COL3, borrow_user_id);
 
         String whereStatement = COL1 + "=" + id;
 
         int toReturn = db.update(TABLE_NAME, contentValues, whereStatement,null);
 
         return toReturn;
+    }
 
-        /*String sqlStatement = "UPDATE " + TABLE_NAME +
-                " SET " + COL2 + " = '" + login + "', " + COL3 + " = '" + password + "'" +
-                " WHERE " + COL1 + " = " + id + ";";
+    public int updateGameBorrower(String id, String borrow_user_id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //ContentValues contentValues = new ContentValues();
+        contentValues.put(COL3, borrow_user_id);
 
-        Log.i("WATlog", sqlStatement);*/
+        String whereStatement = COL1 + "=" + id;
 
-        /*db.execSQL("UPDATE " + TABLE_NAME +
-                " SET " + COL2 + " = '" + login + "', " + COL3 + " = '" + password + "'" +
-                " WHERE " + COL1 + " = " + id + ";");*/
+        int toReturn = db.update(TABLE_NAME, contentValues, whereStatement,null);
+
+        return toReturn;
     }
 
     public Cursor getLastFromDB() {

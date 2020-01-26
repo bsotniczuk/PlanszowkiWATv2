@@ -55,7 +55,7 @@ public class Wydarzenia extends AppCompatActivity {
 
         if (viewId == a1wydarzenie.getId())
         {
-            ShowToast("a1");
+            if (!MainActivity.HideToast) ShowToast("a1");
 
             whichEvent = 1;
             Intent intent = new Intent(getApplicationContext(), EventInfo.class);
@@ -63,7 +63,7 @@ public class Wydarzenia extends AppCompatActivity {
         }
         else if (viewId == b2wydarzenie.getId())
         {
-            ShowToast("b2");
+            if (!MainActivity.HideToast) ShowToast("b2");
 
             whichEvent = 2;
             Intent intent = new Intent(getApplicationContext(), EventInfo.class);
@@ -71,7 +71,7 @@ public class Wydarzenia extends AppCompatActivity {
         }
         else if (viewId == c3wydarzenie.getId())
         {
-            ShowToast("c3");
+            if (!MainActivity.HideToast) ShowToast("c3");
 
             whichEvent = 3;
             Intent intent = new Intent(getApplicationContext(), EventInfo.class);

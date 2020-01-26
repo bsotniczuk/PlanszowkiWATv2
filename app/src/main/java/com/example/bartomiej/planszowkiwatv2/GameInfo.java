@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -21,24 +22,16 @@ public class GameInfo extends AppCompatActivity {
 
         a5 = findViewById(R.id.a5);
 
-        if (ListaGier.whichGame == 1){
+        if (ListaGier.whichGame == 1) {
             a5.setImageResource(R.drawable.a1jpg);
-        }
-        else if (ListaGier.whichGame == 2)
-        {
+        } else if (ListaGier.whichGame == 2) {
             a5.setImageDrawable(null);
             a5.setImageResource(R.drawable.b2jpg);
-        }
-        else if (ListaGier.whichGame == 3)
-        {
+        } else if (ListaGier.whichGame == 3) {
             a5.setImageResource(R.drawable.c3jpg);
-        }
-        else if (ListaGier.whichGame == 4)
-        {
+        } else if (ListaGier.whichGame == 4) {
             a5.setImageResource(R.drawable.d4jpg);
-        }
-        else if (ListaGier.whichGame == 5)
-        {
+        } else if (ListaGier.whichGame == 5) {
             //e5.setVisibility(View.VISIBLE);
             a5.setImageResource(R.drawable.e5jpg);
         }
@@ -61,7 +54,9 @@ public class GameInfo extends AppCompatActivity {
         return;
     }
 
-    public void rezerwuj(View view){
-        Toast.makeText(getApplicationContext(), "Rezerwuj pressed", Toast.LENGTH_SHORT).show();
+    public void rezerwuj(View view) {
+        Toast toast = Toast.makeText(getApplicationContext(), "Ta funkcja będzie wkrótce dostępna", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 }

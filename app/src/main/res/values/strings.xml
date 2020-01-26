@@ -9,4 +9,5 @@
     <string name="title_activity_register_screen">Rejestracja</string>
     <string name="title_activity_game_info">Opis Gry</string>
     <string name="title_activity_event_info">Opis wydarzenia</string>
+    <string name="title_activity_reservation">Reservation</string>
 </resources>

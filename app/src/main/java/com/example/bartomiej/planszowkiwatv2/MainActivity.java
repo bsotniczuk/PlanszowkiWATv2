@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    static boolean HideToast = true; //hide Toast needed to debug app in Real Time
+
     static boolean notifications;
     ImageButton listaGier;
     ImageButton listaWydarzen;

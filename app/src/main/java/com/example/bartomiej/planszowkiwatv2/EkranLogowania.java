@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EkranLogowania extends AppCompatActivity {
 
     //0 -> niezalogowany | 1 -> zalogowany
@@ -21,15 +24,21 @@ public class EkranLogowania extends AppCompatActivity {
     EditText passwordEditText;
 
     DatabaseHelper mDatabaseHelper;
+    DatabaseHelperGames mDatabaseHelperGames;
 
+    //user Data
     static String idOfUser = "-1"; //-1 to uzytkownik nie zalogowany
     static String userSkipped = "-1";
     static String admin = "2";
     static String isLoggedInfo = "1";
 
     static String currentUserLogin="Uzytkownik nie zalogowany";
-
     static String currentUserID = "-1";
+
+    static List listOfBorrowedGames;
+
+    //game Data
+    static String gameNotBorrowedID = "0"; //0 is a state when game isn't borrowed by anyone
 
     String isLogged = "false";
 
@@ -39,6 +48,8 @@ public class EkranLogowania extends AppCompatActivity {
         setContentView(R.layout.activity_ekran_logowania);
 
         init();
+
+        listOfBorrowedGames = new ArrayList();
 
         //if user is logged in continue to MainActivity
         if (isLogged.compareTo("true") == 0) {
@@ -76,7 +87,7 @@ public class EkranLogowania extends AppCompatActivity {
 
                 int temp = mDatabaseHelper.updateUserInfo("1", "true", abc.getString(0));
 
-                Toast.makeText(getApplicationContext(), "Uzytkownik moze poprawnie sie zalogowac | " + check + " | id: " + abc.getString(0) + " | UPDATE: " + temp, Toast.LENGTH_SHORT).show();
+                if (!MainActivity.HideToast) Toast.makeText(getApplicationContext(), "Uzytkownik moze poprawnie sie zalogowac | " + check + " | id: " + abc.getString(0) + " | UPDATE: " + temp, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
@@ -118,8 +129,8 @@ public class EkranLogowania extends AppCompatActivity {
             String user1Login = "Bartlomiej";
             String user1Password = "abc";
 
-            String user2Login = "Stasiak";
-            String user2Password = "Stasiak";
+            String user2Login = "StasiakA";
+            String user2Password = "StasiakA";
 
             //populate Database
             if (!mDatabaseHelper.checkIfExists(userInfoLogin))
@@ -170,6 +181,98 @@ public class EkranLogowania extends AppCompatActivity {
                 Log.i("WATlog", log);
                 //Toast.makeText(getApplicationContext(), log, Toast.LENGTH_LONG).show();
             }
+        } catch (Exception e) {
+            //Toast.makeText(getApplicationContext(), "Exception: " + e, Toast.LENGTH_LONG).show();
+            Log.i("WATlog", "Exception: " + e);
+        }
+    }
+
+    public void initGames() {
+        try {
+            mDatabaseHelperGames = new DatabaseHelperGames(this);
+
+            /*
+            ImageButton a5sekund;
+    ImageButton b7cudow;
+    ImageButton c3catan;
+    ImageButton d4doble;
+    ImageButton e5jungleSpeed;
+             */
+            String gameNotBorrowedID = "0";
+
+            String game5sekund = "5 Sekund"; //czy zalogowany | login
+
+            String game7cudow = "7 Cudow";
+
+            String gameCatan = "Catan";
+
+            String gameDobble = "Dobble";
+
+            String gameJungleSpeed = "Jungle Speed";
+
+            //populate Database
+            if (!mDatabaseHelperGames.checkIfExists(game5sekund))
+                mDatabaseHelperGames.addData(1, game5sekund, gameNotBorrowedID);
+            if (!mDatabaseHelperGames.checkIfExists(game7cudow))
+                mDatabaseHelperGames.addData(2, game7cudow, gameNotBorrowedID);
+            if (!mDatabaseHelperGames.checkIfExists(gameCatan))
+                mDatabaseHelperGames.addData(3, gameCatan, gameNotBorrowedID);
+            if (!mDatabaseHelperGames.checkIfExists(gameDobble))
+                mDatabaseHelperGames.addData(4, gameDobble, gameNotBorrowedID);
+            if (!mDatabaseHelperGames.checkIfExists(gameJungleSpeed))
+                mDatabaseHelperGames.addData(5, gameJungleSpeed, gameNotBorrowedID);
+
+            Cursor data = mDatabaseHelperGames.getData();
+
+            if (data.moveToFirst()) {
+                //Toast.makeText(getApplicationContext(), "Baza Danych zawiera elementy", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Baza Danych jest pusta", Toast.LENGTH_SHORT).show();
+            }
+
+            Cursor borrowedGames = mDatabaseHelperGames.getAllBorrowed();
+
+            if(borrowedGames.moveToFirst())
+            {
+                listOfBorrowedGames.add(borrowedGames); //add current Cursor to the list of BorrowedGames
+
+                while(borrowedGames.moveToNext()) //iterate till the last game in Database
+                {
+                    listOfBorrowedGames.add(borrowedGames);
+                }
+            }
+
+            //sprawdz informacje o użytkowniku zalogowanym
+            //String checkString = userInfoLogin;
+            /*Cursor abc = mDatabaseHelper.getIfExists(1);
+            if (abc.moveToFirst()) {
+                String a = abc.getString(0);
+                String b = abc.getString(1);
+                String c = abc.getString(2);
+
+                currentUserID = a;
+                isLogged = b;
+                idOfUser = c;
+
+                //oznajmianie całej aplikacji o loginie zalogowanej osoby
+                //dodaj opcje sprawdzania czy hasła się zgadzają, żeby zapobiec włamania na czyjeś konto
+                //edytując pamięć urządzenia i zmieniając niskopoziomowo ID
+                //dodaj opcję dwóch baz danych w których będziesz trzymał informację lokalnie i serwerowo
+                //lokalna baza danych będzie trzymać tylko informację o aktualnie zalogowanym użytkowniku
+                int currentUserIDint = Integer.parseInt(c.trim());
+
+                Cursor currentUserInfo = mDatabaseHelper.getIfExists(currentUserIDint);
+                if (currentUserInfo.moveToFirst())
+                {
+                    currentUserLogin = currentUserInfo.getString(1);
+                }
+
+                String log = "BD zawiera grę (" + ") o id: "
+                        + a + " | loginie: " + b + " | haśle: " + c;
+
+                Log.i("WATlog", log);
+                Toast.makeText(getApplicationContext(), log, Toast.LENGTH_LONG).show();
+            }*/
         } catch (Exception e) {
             //Toast.makeText(getApplicationContext(), "Exception: " + e, Toast.LENGTH_LONG).show();
             Log.i("WATlog", "Exception: " + e);

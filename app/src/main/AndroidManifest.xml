@@ -12,10 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Reservation"
+            android:label="@string/title_activity_reservation"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".GameInfo"
             android:label="@string/title_activity_game_info"
             android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegisterScreen"
             android:label="@string/title_activity_register_screen"
@@ -36,7 +41,7 @@
             android:name=".EventInfo"
             android:label="@string/title_activity_event_info"
             android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"
